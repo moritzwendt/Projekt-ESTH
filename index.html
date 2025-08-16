@@ -56,6 +56,7 @@
     <link rel="alternate" hreflang="en" href="/en/">
     <link rel="canonical" href="/">
     <link rel="shortlink" href="/">
+    <link rel="stylesheet" href="index.css">
 
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -72,8 +73,178 @@
     <title>ESTH</title>
 </head>
 <body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/logo.png">
+            <a href="#">KE´ALOHA</a>
+        </div>
+        <ul>
+            <li><a href="#main">Startseite</a></li>
+            <li><a href="#skills">Leistungen</a></li>
+            <li><a href="#about">Über mich</a></li>
+            <li><a href="#portfolio">Galerie</a></li>
+            <li><a href="#feedback">Farben & Logo</a></li>
+        </ul>
+        <button>Kontakt</button>
+        <button id="menuButton" onclick="openMenu()">
+            <i class='bx bx-menu'></i>
+        </button>
+    </nav>
+
+    <div class="main" id="main">
+        <div class="left">
+            <h5>KE´ALOHA – Raum für Auszeit</h5>
+            <h3>Wellness & Massagen für <span>Körper, Geist und Seele</span></h3>
+            <p>
+                Ich bin Anja Myriam Achatz, Master Lomi Practicioner sowie Wellness- und Massagetherapeutin 
+                in 84435 Lengdorf. Wenn du dir eine Auszeit wünschst und gestärkt in den Alltag zurückkehren 
+                möchtest, bist du bei mir in besten Händen.  
+                <br><br>
+                Mobil: 0177 3396092
+            </p>
+            <button>Jetzt Termin vereinbaren</button>
+        </div>
+        <div class="right">
+            <img src="assets/header-img.png">
+        </div>
+    </div>
+
+    <div class="skills" id="skills">
+        <h5>Leistungen</h5>
+        <h3>Mein Angebot</h3>
+        <div class="skill-items">
+            <div class="item">
+                <div class="icon"><i class='bx bx-donate-heart'></i></div>
+                <h4>Lomi-Lomi-Nui Massage</h4>
+                <p>
+                    Traditionelle hawaiianische Massagekunst – individuell auf dich abgestimmt und begleitet 
+                    von Achtsamkeit, Wärme und Herzenspräsenz.
+                </p>
+            </div>
+            <div class="item">
+                <div class="icon"><i class='bx bx-baby-carriage'></i></div>
+                <h4>Lomi Hapai</h4>
+                <p>
+                    Hawaiianische Massage für Schwangere & Seitenlage – sanft, wohltuend und stärkend.
+                </p>
+            </div>
+            <div class="item">
+                <div class="icon"><i class='bx bx-spa'></i></div>
+                <h4>Edelstein Gesichtsmassage *</h4>
+                <p>
+                    Mit hochwertigen Aloe-Vera-Pflegeprodukten für strahlende Haut und Tiefenentspannung.  
+                    Produkte wie Aloe Vera Gel, Lipbalm oder Zahncreme kannst du direkt bei mir erwerben.
+                </p>
+            </div>
+            <div class="item">
+                <div class="icon"><i class='bx bx-health'></i></div>
+                <h4>Weitere Massagen</h4>
+                <p>
+                    Fußreflexzonenmassage, Lava Shell Massage, Meridian Fußmassage, Body Joy Körperwickel 
+                    und vieles mehr – für deine individuelle Auszeit.
+                </p>
+            </div>
+        </div>
+        <p style="margin-top:20px;">-> Genaue Preise findest du auf meinem Flyer (Rückseite).</p>
+    </div>
+
+    <div class="about" id="about">
+        <div class="left">
+            <img src="assets/about-img.png">
+        </div>
+        <div class="right">
+            <h5>Über mich</h5>
+            <h3>Mein Weg</h3>
+            <p>
+                „KE´ALOHA“ – „sei geliebt“ – nach diesem Prinzip biete ich meine spezielle Körperarbeit an.  
+                Mein Weg zur Wellness- und Massagetherapeutin begann auf Hawai’i. Dort spürte ich, dass mein bisheriges 
+                Leben im Büro mich nicht erfüllte. Die Wärme, Gelassenheit und Verbundenheit zur Natur haben mich wachgerüttelt.  
+                Ich wollte etwas Sinnvolles tun – Menschen begleiten, gestärkt und zuversichtlich ins eigene „Ich“ zu finden.
+            </p>
+            <p>
+                Meine Arbeit ist geprägt von Achtsamkeit, Wärme, Herzenspräsenz und einem ganzheitlichen Blick auf Körper, 
+                Geist und Seele. Jede Behandlung ist individuell – denn jeder Mensch ist einzigartig.  
+            </p>
+            <h4>Ausbildung & Weiterbildungen</h4>
+            <p>
+                <strong>2010 – 2012:</strong> Lomi-Lomi-Nui Grund- bis Master-Training, Deep Tissue Massage, Klientenzentrierte Gesprächsführung, Wellness- und Massagetherapeutin u.v.m.<br>
+                <strong>2022 – 2025:</strong> Vertiefungen in Lomi-Lomi, Fußreflexzonenmassage, Lava Shell Massage, Edelstein Gesichtsmassage, Meridian Fußmassage, Body Joy Körperwickel u.v.m.
+            </p>
+        </div>
+    </div>
+
+    <div class="portfolio" id="portfolio">
+        <div class="header">
+            <div class="info">
+                <h5>Galerie</h5>
+                <h3>Bilder & Eindrücke</h3>
+            </div>
+            <button><i class='bx bx-image'></i> Fotos folgen</button>
+        </div>
+
+        <div class="portfo-items">
+            <div class="item">
+                <img src="assets/sc-1.jpg">
+                <div class="info">
+                    <h4>Galerie</h4>
+                    <p>
+                        Fotos folgen in den nächsten 2–3 Wochen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback" id="feedback">
+        <h5>Farben & Logo</h5>
+        <h3>Mein Raum</h3>
+        <div class="customers">
+            <div class="item">
+                <p>
+                    Mein Logo spiegelt die Farben und das Bild meiner Flyer wider.  
+                    <br><br>
+                    Name meines Raumes: <strong>KE´ALOHA – Wellness Massagen – Auszeit für Körper, Geist und Seele</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>0.0.1</p>
+        <div class="top">
+            <div class="logo">
+                <img src="assets/logo.png">
+                <a href="#">KE´ALOHA</a>
+            </div>
+            <ul>
+                <li><a href="#main">Startseite</a></li>
+                <li><a href="#about">Über mich</a></li>
+                <li><a href="#skills">Leistungen</a></li>
+                <li><a href="#portfolio">Galerie</a></li>
+                <li><a href="#feedback">Farben & Logo</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="bottom">
+            <p>
+                © 2025 KE´ALOHA – Anja Myriam Achatz | Wellness & Massagen
+            </p>
+            <div class="links">
+                <a href="#">Datenschutz</a>
+                <a href="#">Impressum</a>
+                <a href="#">Cookies Einstellungen</a>
+            </div>
+        </div>
     </footer>
+    <p>v0.1</p>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
