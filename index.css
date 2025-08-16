@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+/* background-color: #5e3bee; */
+
 html{
     scroll-behavior: smooth;
 }
@@ -18,7 +20,7 @@ a{
 }
 
 a:hover{
-    color: #5e3bee !important;
+    color: #ff7f16 !important;
 }
 
 h5{
@@ -77,8 +79,8 @@ nav button{
 }
 
 nav button:hover{
-    background-color: #5e3bee;
-    border-color: #5e3bee;
+    background-color: #ff7f16;
+    border-color: #ff7f16;
     color: #fff;
 }
 
@@ -91,7 +93,7 @@ nav button#menuButton{
 }
 
 .main{
-    background-color: #deebee;
+    background-color: #ffa6004d;
     padding: 90px 85px;
     display: flex;
     align-items: center;
@@ -112,7 +114,7 @@ nav button#menuButton{
 }
 
 .main .left h3 span{
-    color: #5e3bee;
+    color: #ff7f16;
 }
 
 .main .left p{
@@ -125,7 +127,7 @@ nav button#menuButton{
     margin-top: 40px;
     color: #fff;
     cursor: pointer;
-    background-color: #5e3bee;
+    background-color: #ff7f16;
     padding: 14px 24px;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -154,7 +156,7 @@ nav button#menuButton{
 }
 
 .skills .skill-items .item{
-    background-color: #deebee;
+    background-color: #ffa6004d;
     width: 25%;
     border-radius: 10px;
     padding: 32px;
@@ -164,7 +166,7 @@ nav button#menuButton{
 }
 
 .skills .skill-items .item:hover{
-    border-color: #5e3bee;
+    border-color: #ff7f16;
 }
 
 .skills .skill-items .item .icon{
@@ -204,7 +206,7 @@ nav button#menuButton{
 }
 
 .about .left{
-    background-color: #deebee;
+    background-color: #ffa6004d;
     border-radius: 10px 10px 0 0;
 }
 
@@ -218,7 +220,7 @@ nav button#menuButton{
 }
 
 .portfolio{
-    background-color: #deebee;
+    background-color: #ffa6004d;
     padding: 110px 85px;
 }
 
@@ -262,7 +264,7 @@ nav button#menuButton{
 }
 
 .portfolio .portfo-items .item:hover{
-    border-color: #5e3bee;
+    border-color: #ff7f16;
 }
 
 .portfolio .portfo-items .item img{
@@ -287,7 +289,7 @@ nav button#menuButton{
 .portfolio .portfo-items .item .info a{
     text-decoration: underline;
     text-underline-offset: 10px;
-    text-decoration-color: #5e3bee;
+    text-decoration-color: #ff7f16;
 }
 
 .portfolio .portfo-items .item .info a i{
@@ -322,7 +324,7 @@ nav button#menuButton{
 }
 
 .feedback .customers .item:hover{
-    border-color: #5e3bee;
+    border-color: #ff7f16;
 }
 
 .feedback .customers .item p{
@@ -354,7 +356,7 @@ nav button#menuButton{
 }
 
 footer{
-    background-color: #deebee;
+    background-color: #ffa6004d;
     padding: 85px;
     display: flex;
     flex-direction: column;
