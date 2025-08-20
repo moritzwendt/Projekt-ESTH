@@ -4,75 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Projekt pausiert</title>
+    <!-- v2 -->
     <style>
         :root{
         --bg: #fafafa;
-        --panel-bg: rgba(255,255,255,0.85);
+        --panel-bg: rgba(255,255,255,0.9);
         --accent-yellow: #f6d55c;
-        --accent-yellow-dark: #e6c550;
         --text: #111;
         --muted: #555;
-        --tape-height: 110px;
+        --tape-height: 90px;
         }
 
         *{box-sizing:border-box}
-        html,body{
-        height:100%;
+        body{
         margin:0;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        font-family: Inter, sans-serif;
         background:var(--bg);
         color:var(--text);
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
         }
 
-        /* Tape band (top & bottom). uses two layered repeating-linear-gradients
-        to create yellow diagonal stripes + subtle darker band for depth. */
+        /* Absperrband oben/unten */
         .tape {
         height: var(--tape-height);
         width:100%;
-        overflow:hidden;
-        position:relative;
-        }
-
-        .tape::before,
-        .tape::after{
-        content:"";
-        position:absolute;
-        inset:0;
-        /* yellow / transparent diagonal pattern */
         background:
             repeating-linear-gradient(
             -45deg,
-            var(--accent-yellow) 0 28px,
-            transparent 28px 56px
-            ),
-            repeating-linear-gradient(
-            -45deg,
-            rgba(0,0,0,0.06) 0 7px,
-            rgba(0,0,0,0) 7px 56px
+            var(--accent-yellow) 0 30px,
+            black 30px 60px
             );
-        /* make stripes look slightly glossy */
-        transform: skewY(-3deg);
-        transform-origin: left;
-        /* move the pattern a bit so it doesn't start flush at left */
-        left:-20%;
-        right:-20%;
         }
 
-        /* bottom tape mirrored */
-        .tape.bottom::before{ transform: skewY(3deg) scaleY(-1); }
-
-        /* thin dark strip on edge to simulate taped border */
-        .tape .edge {
-        position:absolute;
-        left:0; right:0; bottom:0;
-        height:6px;
-        background:linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.02));
-        pointer-events:none;
-        }
-
-        /* Content area center */
         .center {
         min-height: calc(100vh - (var(--tape-height) * 2));
         display:flex;
@@ -82,21 +44,19 @@
         }
 
         .card {
-        max-width:900px;
+        max-width:700px;
         width:100%;
         text-align:center;
         padding:48px 36px;
-        border-radius:18px;
+        border-radius:16px;
         background:var(--panel-bg);
-        box-shadow: 0 8px 30px rgba(16,24,40,0.08);
-        border: 1px solid rgba(16,24,40,0.04);
-        backdrop-filter: blur(6px) saturate(120%);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.1);
         }
 
         h1{
         margin:0 0 14px 0;
         font-size:36px;
-        letter-spacing:-0.02em;
+        letter-spacing:-0.01em;
         }
         p.lead{
         margin:0 0 18px 0;
@@ -111,83 +71,27 @@
         font-size:14px;
         }
 
-        /* small decorative tape slashes behind the title */
-        .card::before{
-        content:"";
-        position:absolute;
-        height:220px;
-        width:220px;
-        left:calc(50% - 110px - 220px);
-        top:calc(50% - 110px - 120px);
-        background: repeating-linear-gradient(-45deg, rgba(246,213,92,0.18) 0 30px, rgba(0,0,0,0) 30px 60px);
-        transform:rotate(14deg);
-        border-radius:8px;
-        pointer-events:none;
-        z-index:0;
-        display:none;
-        }
-
-        /* Make card content above decorative slashes */
-        .card > *{position:relative; z-index:1}
-
-        /* responsive */
         @media (min-width:900px){
-        h1{font-size:48px}
-        .card::before{display:block}
-        }
-
-        /* optional: small visual 'caution' icon using CSS */
-        .caution {
-        display:inline-block;
-        margin-bottom:12px;
-        width:64px;
-        height:64px;
-        border-radius:12px;
-        background: linear-gradient(180deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
-        box-shadow: 0 6px 20px rgba(230,180,40,0.18), inset 0 -3px 6px rgba(0,0,0,0.06);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        }
-        .caution svg{width:34px;height:34px;display:block}
-
-        /* small helper for dark mode support: invert tape in dark backgrounds (keeps readable) */
-        @media (prefers-color-scheme: dark){
-        :root{ --bg: #0b0c0f; --panel-bg: rgba(10,12,16,0.6); --text:#eef0f3; --muted:#c9cbd0;}
-        .tape::before{ filter:brightness(0.95) }
+        h1{font-size:42px}
         }
     </style>
     </head>
     <body>
-    <div class="tape top" aria-hidden="true">
-        <div class="edge"></div>
-    </div>
+    <div class="tape top"></div>
 
-    <main class="center" role="main">
-        <article class="card" role="article" aria-labelledby="title">
-        <div class="caution" aria-hidden="true">
-            <!-- simple warning icon -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <path d="M11 7h2v6h-2zM11 15h2v2h-2z" fill="#1a1a1a"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 21h22L12 2 1 21z" fill="#1a1a1a" opacity="0.06"/>
-            </svg>
-        </div>
-
-        <h1 id="title">Projekt pausiert — Seite vorübergehend entfernt</h1>
-
+    <main class="center">
+        <article class="card">
+        <h1>Projekt pausiert</h1>
         <p class="lead">
-            Diese ID-Webseite wurde von der Testdomain genommen. Das Projekt ist aktuell gestoppt und vorübergehend auf Eis gelegt.
-            Vielen Dank für dein Verständnis.
+            Diese Webseite ist aktuell offline.  
+            Das Projekt wurde gestoppt und vorübergehend auf Eis gelegt.
         </p>
-
         <p class="meta">
-            Falls du Fragen hast oder Zugang benötigst, kontaktiere bitte die Projektverantwortlichen (z. B. per E-Mail).
+            Vielen Dank für dein Verständnis.
         </p>
         </article>
     </main>
 
-    <div class="tape bottom" aria-hidden="true">
-        <div class="edge"></div>
-    </div>
+    <div class="tape bottom"></div>
 </body>
 </html>
