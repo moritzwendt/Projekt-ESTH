@@ -1,330 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade">
-    <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()">
-    
-    <meta name="robots" content="noindex, noarchive, noimageindex, nosnippet, notranslate, nofollow">
-    <meta name="googlebot" content="nositelinkssearchbox">
-    <meta name="bingbot" content="noindex, nofollow">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#101010">
-    <meta name="msapplication-TileColor" content="#101010">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport-fit" content="cover">
-    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projekt pausiert</title>
+    <style>
+        :root{
+        --bg: #fafafa;
+        --panel-bg: rgba(255,255,255,0.85);
+        --accent-yellow: #f6d55c;
+        --accent-yellow-dark: #e6c550;
+        --text: #111;
+        --muted: #555;
+        --tape-height: 110px;
+        }
 
-    <meta name="HandheldFriendly" content="true">
-    <meta name="screen-orientation" content="portrait">
-    <meta name="layoutmode" content="fitscreen/standard">
-    <meta name="browsermode" content="application">
-    <meta name="nightmode" content="disable">
-    <meta name="cleartype" content="on">
-    <meta name="msapplication-config" content="none">
+        *{box-sizing:border-box}
+        html,body{
+        height:100%;
+        margin:0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        background:var(--bg);
+        color:var(--text);
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        }
 
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="de_DE">
-    <meta name="twitter:card" content="summary">
+        /* Tape band (top & bottom). uses two layered repeating-linear-gradients
+        to create yellow diagonal stripes + subtle darker band for depth. */
+        .tape {
+        height: var(--tape-height);
+        width:100%;
+        overflow:hidden;
+        position:relative;
+        }
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#101010">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="dns-prefetch" href="//cdn.assets.local">
-    <link rel="dns-prefetch" href="//fonts.cdn.local">
-    <link rel="preconnect" href="//cdn.assets.local" crossorigin>
-    <link rel="preconnect" href="//fonts.cdn.local" crossorigin>
-    <link rel="prefetch" href="/assets/script.js" as="script">
-    <link rel="prefetch" href="/assets/style.css" as="style">
-    <link rel="prerender" href="/startseite.html">
-    <link rel="preload" href="/assets/font.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/main.js" as="script">
+        .tape::before,
+        .tape::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        /* yellow / transparent diagonal pattern */
+        background:
+            repeating-linear-gradient(
+            -45deg,
+            var(--accent-yellow) 0 28px,
+            transparent 28px 56px
+            ),
+            repeating-linear-gradient(
+            -45deg,
+            rgba(0,0,0,0.06) 0 7px,
+            rgba(0,0,0,0) 7px 56px
+            );
+        /* make stripes look slightly glossy */
+        transform: skewY(-3deg);
+        transform-origin: left;
+        /* move the pattern a bit so it doesn't start flush at left */
+        left:-20%;
+        right:-20%;
+        }
 
-    <link rel="alternate" hreflang="de" href="/de/">
-    <link rel="alternate" hreflang="en" href="/en/">
-    <link rel="canonical" href="/">
-    <link rel="shortlink" href="/">
-    <link rel="stylesheet" href="index.css">
+        /* bottom tape mirrored */
+        .tape.bottom::before{ transform: skewY(3deg) scaleY(-1); }
 
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+        /* thin dark strip on edge to simulate taped border */
+        .tape .edge {
+        position:absolute;
+        left:0; right:0; bottom:0;
+        height:6px;
+        background:linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.02));
+        pointer-events:none;
+        }
 
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-title" content="">
-    <meta name="application-name" content="">
-    <meta name="msapplication-starturl" content="/">
-    <meta name="msapplication-navbutton-color" content="#101010">
-    <meta name="msapplication-tooltip" content="">
-    <meta name="msapplication-window" content="width=1024;height=768">
-    <meta name="msapplication-task" content="name=;action-uri=/;icon-uri=/favicon.ico">
-    <title>ESTH</title>
-</head>
-<body>
+        /* Content area center */
+        .center {
+        min-height: calc(100vh - (var(--tape-height) * 2));
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:40px 20px;
+        }
 
-    <nav>
-        <div class="logo">
-            <img src="assets/logo.png">
-            <a href="#">KE´ALOHA</a>
-        </div>
-        <ul>
-            <li><a href="#main">Startseite</a></li>
-            <li><a href="#skills">Leistungen</a></li>
-            <li><a href="#about">Über mich</a></li>
-            <li><a href="#portfolio">Galerie</a></li>
-            <li><a href="#feedback">Mein Raum</a></li>
-        </ul>
-        <button>Kontakt</button>
-        <button id="menuButton" onclick="openMenu()">
-            <i class='bx bx-menu'></i>
-        </button>
-    </nav>
+        .card {
+        max-width:900px;
+        width:100%;
+        text-align:center;
+        padding:48px 36px;
+        border-radius:18px;
+        background:var(--panel-bg);
+        box-shadow: 0 8px 30px rgba(16,24,40,0.08);
+        border: 1px solid rgba(16,24,40,0.04);
+        backdrop-filter: blur(6px) saturate(120%);
+        }
 
-    <div class="main" id="main">
-        <div class="left">
-            <h5>KE´ALOHA – Raum für Auszeit</h5>
-            <h3>Wellness & Massagen für <span>Körper, Geist und Seele</span></h3>
-            <p>
-                Ich bin Anja Myriam Achatz, Master Lomi Practicioner sowie Wellness- und Massagetherapeutin 
-                in 84435 Lengdorf. Wenn du dir eine Auszeit wünschst und gestärkt in den Alltag zurückkehren 
-                möchtest, bist du bei mir in besten Händen.  
-                <br><br>
-                Mobil: 0177 3396092
-            </p>
-            <button>Jetzt Termin vereinbaren</button>
-        </div>
-        <div class="right">
-            <img src="assets/aloha.png">
-        </div>
+        h1{
+        margin:0 0 14px 0;
+        font-size:36px;
+        letter-spacing:-0.02em;
+        }
+        p.lead{
+        margin:0 0 18px 0;
+        color:var(--muted);
+        font-size:18px;
+        line-height:1.5;
+        }
+
+        .meta {
+        margin-top:10px;
+        color:var(--muted);
+        font-size:14px;
+        }
+
+        /* small decorative tape slashes behind the title */
+        .card::before{
+        content:"";
+        position:absolute;
+        height:220px;
+        width:220px;
+        left:calc(50% - 110px - 220px);
+        top:calc(50% - 110px - 120px);
+        background: repeating-linear-gradient(-45deg, rgba(246,213,92,0.18) 0 30px, rgba(0,0,0,0) 30px 60px);
+        transform:rotate(14deg);
+        border-radius:8px;
+        pointer-events:none;
+        z-index:0;
+        display:none;
+        }
+
+        /* Make card content above decorative slashes */
+        .card > *{position:relative; z-index:1}
+
+        /* responsive */
+        @media (min-width:900px){
+        h1{font-size:48px}
+        .card::before{display:block}
+        }
+
+        /* optional: small visual 'caution' icon using CSS */
+        .caution {
+        display:inline-block;
+        margin-bottom:12px;
+        width:64px;
+        height:64px;
+        border-radius:12px;
+        background: linear-gradient(180deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+        box-shadow: 0 6px 20px rgba(230,180,40,0.18), inset 0 -3px 6px rgba(0,0,0,0.06);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        }
+        .caution svg{width:34px;height:34px;display:block}
+
+        /* small helper for dark mode support: invert tape in dark backgrounds (keeps readable) */
+        @media (prefers-color-scheme: dark){
+        :root{ --bg: #0b0c0f; --panel-bg: rgba(10,12,16,0.6); --text:#eef0f3; --muted:#c9cbd0;}
+        .tape::before{ filter:brightness(0.95) }
+        }
+    </style>
+    </head>
+    <body>
+    <div class="tape top" aria-hidden="true">
+        <div class="edge"></div>
     </div>
 
-    <div class="skills" id="skills">
-        <h5>Leistungen</h5>
-        <h3>Mein Angebot</h3>
-        <div class="skill-items">
-            <div class="item">
-                <div class="icon"><i class='bx bx-donate-heart'></i></div>
-                <h4>Lorem Ipsum</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-            </div>
-            <div class="item">
-                <div class="icon"><i class='bx bx-baby-carriage'></i></div>
-                <h4>Lorem Ipsum</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-            </div>
-            <div class="item">
-                <div class="icon"><i class='bx bx-spa'></i></div>
-                <h4>Lorem Ipsum</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-            </div>
-            <div class="item">
-                <div class="icon"><i class='bx bx-health'></i></div>
-                <h4>Lorem Ipsum</h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                </p>
-            </div>
+    <main class="center" role="main">
+        <article class="card" role="article" aria-labelledby="title">
+        <div class="caution" aria-hidden="true">
+            <!-- simple warning icon -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M11 7h2v6h-2zM11 15h2v2h-2z" fill="#1a1a1a"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 21h22L12 2 1 21z" fill="#1a1a1a" opacity="0.06"/>
+            </svg>
         </div>
+
+        <h1 id="title">Projekt pausiert — Seite vorübergehend entfernt</h1>
+
+        <p class="lead">
+            Diese ID-Webseite wurde von der Testdomain genommen. Das Projekt ist aktuell gestoppt und vorübergehend auf Eis gelegt.
+            Vielen Dank für dein Verständnis.
+        </p>
+
+        <p class="meta">
+            Falls du Fragen hast oder Zugang benötigst, kontaktiere bitte die Projektverantwortlichen (z. B. per E-Mail).
+        </p>
+        </article>
+    </main>
+
+    <div class="tape bottom" aria-hidden="true">
+        <div class="edge"></div>
     </div>
-
-    <div class="about" id="about">
-        <div class="left">
-            <img src="assets/selfie.png">
-        </div>
-        <div class="right">
-            <h3>Über mich</h3>
-            <!-- <h3>Mein Weg</h3> -->
-            <p>
-                "KE´ALOHA" - "sei geliebt" -  Nach dem Prinzip biete ich meine spezielle Körperarbeit an. 
-
-                Ich heiße Anja Myriam Achatz und mein Weg zur Wellness- und Massagetherapeutin begann an einem für mich ganz besonderen Ort: Hawai`i. Während eines Urlaubs auf der Insel wurde mir bewusst, dass mein bisheriges Leben im Büro mich nicht erfüllte. 
-
-                Die Wärme, die Gelassenheit und die tiefe Verbindung zur Natur an diesem Kraftort hat mich wachgerüttelt - ich wollte mein Leben ändern und etwas Sinnvolles tun. Etwas, das Menschen zuversichtlich und gestärkt ins eigene "Ich" begleitet.  
-            </p>
-            <p>
-                Meine Arbeit ist geprägt von Achtsamkeit, Wärme, Herzens Präsenz und einem ganzheitlichen Blick auf Körper, Geist und Seele. Jede Behandlung gestalte ich individuell - denn jeder Mensch ist einzigartig. 
-
-                Wenn du dir eine Auszeit wünschst und gestärkt in den Alltag zurückkehren möchtest, bist du bei mir in besten Händen. 
-
-                Ich freue mich, dich zur eigenen Mitte begleiten zu dürfen.
-            </p>
-        </div>
-    </div>
-
-
-    <div class="timeline" id="timeline">
-        <h3>Werdegang</h3>
-        <div class="timeline-container">
-            
-            <div class="timeline-item left">
-                <div class="content">
-                    <h4>2010</h4>
-                    <p>
-                        Grundkurs für hawaiianische Massagekunst – München<br>
-                        Lomi-Lomi-Nui Aufbaukurs – München<br>
-                        Lomi-Lomi-Nui Practicioner-Training – München
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="content">
-                    <h4>2011</h4>
-                    <p>
-                        Advanced Lomi-Lomi-Nui – München<br>
-                        Master Lomi-Lomi-Nui – La Gomera<br>
-                        Deep-Tissue-Massagekurs – München<br>
-                        Gesprächsführung (Carl Rogers) – München<br>
-                        Lebendige Anatomie – München<br>
-                        Ausbildung Wellness- & Massagetherapeutin – München
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="content">
-                    <h4>2012</h4>
-                    <p>
-                        Master Lomi-Lomi-Nui "Beyond the Horizon" – La Gomera<br>
-                        Fortbildung Lomi-Hapai – München
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="content">
-                    <h4>2022</h4>
-                    <p>
-                        Master Lomi-Lomi-Nui "Ke Ala Hoku" – München
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="content">
-                    <h4>2023</h4>
-                    <p>
-                        Ausbildung Ganzkörpermassage – München<br>
-                        Fußreflexzonen – Lengdorf<br>
-                        Lava Shell Massage – Tegernsee<br>
-                        Refresher Lomi Hapai – München<br>
-                        Supervision Lomi-Lomi – Bobingen
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="content">
-                    <h4>2024</h4>
-                    <p>
-                        Lomi-Lomi-Oluea B1 – Wolfertschwenden<br>
-                        Feinschliffkurs – Sankt Georgen<br>
-                        Practicioner Hawaiianische Körperarbeit – Sankt Georgen<br>
-                        Reflexzonenmassage – Sankt Georgen<br>
-                        Supervision – Sankt Georgen<br>
-                        Meridian Fußmassage – Münchsmünster
-                    </p>
-                </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="content">
-                    <h4>2025</h4>
-                    <p>
-                        Edelstein Gesichtsmassage – Münchsmünster<br>
-                        Body Joy Körperwickel – Münchsmünster
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="portfolio" id="portfolio">
-        <div class="header">
-            <div class="info">
-                <h5>Galerie</h5>
-                <h3>Bilder & Eindrücke</h3>
-            </div>
-            <button><i class='bx bx-image'></i> Fotos folgen</button>
-        </div>
-
-        <div class="portfo-items">
-            <div class="item">
-                <img src="assets/sc-1.jpg">
-                <div class="info">
-                    <h4>Galerie</h4>
-                    <p>
-                        Fotos folgen in den nächsten 2–3 Wochen.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="feedback" id="feedback">
-        <h5>Mein Raum</h5>
-        <div class="customers">
-            <div class="item">
-                <p>
-                    <strong>Name meines Raumes: <br> </strong>KE´ALOHA – Wellness Massagen – Auszeit für Körper, Geist und Seele.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="top">
-            <div class="logo">
-                <img src="assets/logo.png">
-                <a href="#">KE´ALOHA</a>
-            </div>
-            <ul>
-                <li><a href="#main">Startseite</a></li>
-                <li><a href="#about">Über mich</a></li>
-                <li><a href="#skills">Leistungen</a></li>
-                <li><a href="#portfolio">Galerie</a></li>
-                <li><a href="#feedback">Farben & Logo</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="#"><i class='bx bxl-instagram'></i></a>
-                <a href="#"><i class='bx bxl-twitter'></i></a>
-                <a href="#"><i class='bx bxl-linkedin-square'></i></a>
-            </div>
-        </div>
-        <div class="separator"></div>
-        <div class="bottom">
-            <p>
-                Copyright © 2025 Moritz Wendt. Alle Rechte vorbehalten. v0.2.5
-            </p>
-            <div class="links">
-                <a href="#">###Datenschutz###</a>
-                <a href="#">###Impressum###</a>
-                <a href="#">###Cookies Einstellungen###</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
