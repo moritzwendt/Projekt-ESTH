@@ -1,19 +1,29 @@
 function openMenu() {
     const nav = document.querySelector('nav');
-    nav.classList.toggle('open');
-
     const menu = nav.querySelector('ul');
-    if (nav.classList.contains('open')) {
-        menu.style.display = 'flex';
-        menu.style.flexDirection = 'column';
-        menu.style.position = 'absolute';
-        menu.style.top = '80px';
-        menu.style.right = '0';
-        menu.style.background = '#fff';
-        menu.style.width = '100%';
-        menu.style.padding = '20px 0';
-        menu.style.boxShadow = '0 6px 20px rgba(0,0,0,0.1)';
+    const button = document.getElementById('menuButton');
+
+    nav.classList.toggle('menu-active');
+
+    if (nav.classList.contains('menu-active')) {
+        menu.classList.add('menu-show');
+        menu.classList.remove('menu-hide');
+        button.classList.add('active');
+        document.body.style.overflow = 'hidden';
     } else {
-        menu.removeAttribute('style');
+        menu.classList.remove('menu-show');
+        menu.classList.add('menu-hide');
+        button.classList.remove('active');
+        document.body.style.overflow = '';
     }
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('menu-active'); 
+            menu.classList.remove('menu-show');
+            menu.classList.add('menu-hide');
+            button.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
 }
