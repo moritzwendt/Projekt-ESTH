@@ -447,12 +447,11 @@ nav ul a:hover {
     }
 
     .timeline-container::before {
-        left: 20px;
+        display: flex;
     }
 
     .timeline-item {
         width: 100%;
-        padding-left: 60px;
     }
 
     .timeline-item.left,
