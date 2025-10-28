@@ -13,6 +13,7 @@
     --font-h2: 2rem;
     --font-h3: 1.25rem;
     --font-body: 1rem;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -28,6 +29,10 @@ body {
     background-color: var(--clr-bg);
     scroll-behavior: smooth;
     line-height: 1.6;
+}
+
+a {
+    color: inherit;
 }
 
 /* ---------- NAVIGATION ---------- */
@@ -159,11 +164,11 @@ section {
     box-shadow: var(--shadow);
 }
 
-.right{
+/* .main .right, .about .left{
     display: grid;
     justify-items: center;
     align-items: center;
-}
+} */
 /* ---------- LEISTUNGEN ---------- */
 .skill-items {
     display: grid;
@@ -171,8 +176,8 @@ section {
     gap: 30px;
 }
 
-.skills h2{
-    padding-bottom: 10px;
+.skills h2 {
+    padding-bottom: 1rem;
 }
 
 .skill-items .item {
@@ -301,14 +306,22 @@ footer a:hover {
     color: var(--clr-primary);
 }
 
+
+/* ======= NAVIGATION + DROPDOWN ======= */
 nav {
     position: relative;
-    z-index: 1000;  
+    z-index: 1000;
     border-radius: 0 0 var(--radius) var(--radius);
     box-shadow: var(--shadow);
     transition: border-radius 0.35s ease, box-shadow 0.35s ease;
 }
 
+nav.menu-active {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Dropdown-Menü */
 nav ul {
     display: none;
     flex-direction: column;
@@ -320,12 +333,12 @@ nav ul {
     background: #fff;
     border-radius: 0 0 var(--radius) var(--radius);
     padding: 10px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     transition: all 0.35s ease;
-    z-index: 900; 
+    z-index: 900;
 }
 
 nav ul.menu-show {
@@ -345,17 +358,31 @@ nav ul.menu-hide {
 }
 
 @keyframes dropIn {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes dropOut {
-    0% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-10px); }
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
 
 nav ul li {
-    margin: 4px 0; 
+    margin: 4px 0;
 }
 
 nav ul a {
@@ -385,16 +412,6 @@ nav ul a:hover {
     color: var(--clr-primary);
 }
 
-nav {
-    border-radius: 0 0 var(--radius) var(--radius);
-    box-shadow: var(--shadow);
-    transition: border-radius 0.35s ease, box-shadow 0.35s ease;
-}
-
-nav.menu-active {
-    border-radius: 0;       
-    box-shadow: none;      
-}
 
 @media (max-width: 1200px) {
     .main .left h1 {
@@ -469,5 +486,79 @@ nav.menu-active {
 
     footer {
         text-align: center;
+    }
+}
+
+@media (min-width: 992px) {
+
+    #menuButton {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        justify-content: flex-end;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        width: auto;
+        padding: 0;
+        animation: none;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+}
+
+@media (max-width: 992px) {
+
+    #menuButton {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul.menu-show,
+    nav ul.menu-hide {
+        display: flex;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: #fff;
+        border-radius: 0 0 var(--radius) var(--radius);
+        padding: 10px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.35s ease;
+        z-index: 900;
+    }
+
+    nav ul.menu-show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 }
