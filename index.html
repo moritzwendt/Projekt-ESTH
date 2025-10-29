@@ -8,6 +8,7 @@
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
         <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css" media="screen">
     </head>
     <body>
         <nav>
@@ -202,10 +203,27 @@
                     <h5>Galerie</h5>
                     <h2>Bilder & Eindrücke</h2>
                 </div>
-                <button class="btn-disabled">
-                    <i class='bx bx-image'></i> Fotos folgen </button>
             </div>
             <!-- <div class="portfo-items"><div class="item"><img src="assets/sc-1.jpg" alt="Galerie Vorschau"><div class="info"><h4>Galerie</h4><p>Fotos folgen in den nächsten Wochen.</p></div></div></div> -->
+        </section>
+        <section class="gallery-box">
+            <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+                <div class="gallery-cell">
+                    <img src="assets/aloha.png" alt=""> 
+                </div>
+                <div class="gallery-cell">
+                    <img src="assets/aloha.png" alt=""> 
+                </div>
+                <div class="gallery-cell">
+                    <img src="assets/aloha.png" alt=""> 
+                </div>
+                <div class="gallery-cell">
+                    <img src="assets/aloha.png" alt=""> 
+                </div>
+                <div class="gallery-cell">
+                    <img src="assets/aloha.png" alt=""> 
+                </div>
+            </div>
         </section>
         <footer>
             <div class="top">
@@ -243,11 +261,12 @@
             <div class="bottom">
                 <p>© 2025 Moritz Wendt. Alle Rechte vorbehalten.</p>
                 <div class="links">
-                    <a href="datenschutz.html">Datenschutz</a>
+                    <a class="links-a-r" href="datenschutz.html">Datenschutz</a>
                     <a href="impressum.html">Impressum</a>
                 </div>
             </div>
         </footer>
         <script src="script.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js"></script>
     </body>
 </html>
