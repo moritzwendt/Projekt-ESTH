@@ -29,6 +29,7 @@ body {
     background-color: var(--clr-bg);
     scroll-behavior: smooth;
     line-height: 1.6;
+    padding-top: 80px;
 }
 
 a {
@@ -38,8 +39,10 @@ a {
 /* ---------- NAVIGATION ---------- */
 nav {
     background-color: #fff;
-    position: sticky;
+    position: fixed !important;
     top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -266,29 +269,91 @@ section {
     z-index: 2;
 }
 
-.gallery-box {
+
+/* ABOUT ROOM */
+
+.portfolio{
+    padding: 0 5%;
+}
+
+
+/* GALLERY */
+
+.gallery-box{
     padding: 0 0 5rem 0;
 }
 
-.gallery {
-    background: var(--clr-bg);
+.carousel {
+  background: var(--clr-bg);
 }
 
-.gallery-cell {
-    width: 66%;
-    height: 200px;
-    margin-right: 10px;
-    counter-increment: gallery-cell;
-    overflow: hidden; 
-    position: relative;
+.carousel-cell {
+  width: 70%;
+  height: 200px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
 }
 
-.gallery-cell img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
+.carousel-cell img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  /* dim unselected */
+  opacity: 0.7;
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s, transform 0.3s, -webkit-filter 0.3s, filter 0.3s;
+          transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+}
+
+.carousel-cell.is-selected img {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-filter: none;
+          filter: none;
+}
+
+@media screen and ( min-width: 768px ) {
+  .carousel-cell {
+    height: 400px;
+  }
+}
+
+@media screen and ( min-width: 960px ) {
+  .carousel-cell {
+    width: 60%;
+  }
+}
+
+.flickity-prev-next-button {
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  opacity: 0.6;
+}
+.flickity-prev-next-button:hover {
+  background: transparent;
+  opacity: 1;
+}
+.flickity-prev-next-button .arrow {
+  fill: white;
+}
+.flickity-prev-next-button.no-svg {
+  color: white;
+}
+.flickity-prev-next-button.previous { left: 0; }
+.flickity-prev-next-button.next { right: 0; }
+.flickity-prev-next-button:disabled {
+  display: none;
 }
 
 /* ---------- FOOTER ---------- */
@@ -515,6 +580,10 @@ nav ul a:hover {
     footer {
         text-align: center;
     }
+
+    .addres-br{
+        display: block !important;
+    }
 }
 
 @media (min-width: 992px) {
@@ -588,5 +657,9 @@ nav ul a:hover {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
+    }
+
+    footer .top ul{
+        display: none;
     }
 }
