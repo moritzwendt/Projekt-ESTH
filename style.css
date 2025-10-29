@@ -32,6 +32,14 @@ body {
     padding-top: 80px;
 }
 
+.main-data{
+    display: flex !important;
+}
+
+.data{
+    padding: 100px 15%;
+}
+
 a {
     color: inherit;
 }
@@ -167,12 +175,25 @@ section {
     box-shadow: var(--shadow);
 }
 
+.main .right{
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* .main .right, .about .left{
     display: grid;
     justify-items: center;
     align-items: center;
 } */
 /* ---------- LEISTUNGEN ---------- */
+
+.skills{
+    background-color: #fffaf0; /* gleiche Farbe wie .timeline */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 80px 5%;
+}
+
 .skill-items {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,7 +201,8 @@ section {
 }
 
 .skills h2 {
-    padding-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 .skill-items .item {
@@ -273,14 +295,14 @@ section {
 /* ABOUT ROOM */
 
 .portfolio{
-    padding: 0 5%;
+    padding: 100px 5% 30px 5%;
 }
 
 
 /* GALLERY */
 
 .gallery-box{
-    padding: 0 0 5rem 0;
+    padding: 0 0 0 0;
 }
 
 .carousel {
@@ -536,6 +558,14 @@ nav ul a:hover {
         grid-template-rows: 2fr;
     }
 
+    .data-imp{
+        padding-bottom: 0 !important;
+    }
+
+    .data{
+        padding: 100px 5%;
+    }
+
     #menuButton {
         display: block;
     }
@@ -573,9 +603,9 @@ nav ul a:hover {
         flex-direction: column;
     }
 
-    .about {
+    /* .about {
         text-align: center;
-    }
+    } */
 
     footer {
         text-align: center;
@@ -645,7 +675,7 @@ nav ul a:hover {
         background: #fff;
         border-radius: 0 0 var(--radius) var(--radius);
         padding: 10px 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.12);
         opacity: 0;
         transform: translateY(-10px);
         pointer-events: none;
