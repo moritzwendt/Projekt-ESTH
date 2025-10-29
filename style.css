@@ -138,6 +138,16 @@ nav .logo img {
     font-size: 28px;
 }
 
+.main button{
+    border-radius: 16px;
+    padding: 10px 18px;
+    margin: 1rem 0.5rem 0 0;
+}
+
+.main button a{
+    font-size: 1rem;
+    padding: 0;
+}
 /* ---------- SECTIONS ---------- */
 section {
     padding: 100px 5%;
