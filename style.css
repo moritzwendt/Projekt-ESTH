@@ -604,10 +604,10 @@ nav ul a:hover {
         font-size: 1.8rem;
     }
 
-    .btn-primary,
+    /* .btn-primary,
     .btn-accent {
         width: 100%;
-    }
+    } */
 
     .skill-items {
         flex-direction: column;
