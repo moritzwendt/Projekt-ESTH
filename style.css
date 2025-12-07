@@ -557,10 +557,16 @@ nav ul a:hover {
 
     .main {
         display: block;
+        padding-top: 1rem;
     }
 
     .main .right {
         display: none;
+    }
+
+    .main .right2{
+        display: block !important;
+        padding-bottom: 1rem;
     }
 
     .about {
