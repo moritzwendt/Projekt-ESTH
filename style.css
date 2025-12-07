@@ -566,7 +566,7 @@ nav ul a:hover {
 
     .main .right2{
         display: block !important;
-        padding-bottom: 1rem;
+        padding-bottom: 0.5rem;  
     }
 
     .about {
